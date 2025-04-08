@@ -17,8 +17,21 @@ nb = "1.1.0"
 embedded-hal = "1.0"
 
 [dependencies.niti-hal]
-path = "./hdk/niti-hal"
-features = ["niti-v1"]
+path = "C:/niti/hdk/niti-hal"
+{% case board -%}
+  {%- when "Niti V1 Board" -%}
+    features = ["niti-v1"]
+  {%- when "Arduino Mega 2560" -%}
+    features = ["arduino-mega2560"]
+  {%- when "Arduino Nano" -%}
+    features = ["arduino-nano"]
+  {%- when "Arduino Nano New Bootloader" -%}
+    features = ["arduino-nano"]
+  {%- when "Arduino Uno" -%}
+    features = ["arduino-uno"]
+  {%- when "Nano168" -%}
+    features = ["nano168"]
+{%- endcase %}
 
 [build-dependencies.proc-macro2]
 version = "=1.0.79"
